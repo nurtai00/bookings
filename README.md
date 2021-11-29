@@ -1,4 +1,4 @@
-Diploma project
+Diploma Project
 
 "Booking App"
 
