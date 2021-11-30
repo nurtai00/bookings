@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"github.com/alexedwards/scs/v2"
-	"github.com/nurtai00/bookings/pkg/config"
-	"github.com/nurtai00/bookings/pkg/handlers"
-	"github.com/nurtai00/bookings/pkg/render"
+	"github.com/nurtai00/bookings/internal/config"
+	"github.com/nurtai00/bookings/internal/handlers"
+	"github.com/nurtai00/bookings/internal/render"
 	"log"
 	"net/http"
 	"time"

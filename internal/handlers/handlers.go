@@ -3,9 +3,9 @@ package handlers
 import (
 	"encoding/json"
 	"fmt"
-	"github.com/nurtai00/bookings/pkg/config"
-	"github.com/nurtai00/bookings/pkg/models"
-	"github.com/nurtai00/bookings/pkg/render"
+	"github.com/nurtai00/bookings/internal/config"
+	"github.com/nurtai00/bookings/internal/models"
+	"github.com/nurtai00/bookings/internal/render"
 	"log"
 	"net/http"
 )
@@ -89,7 +89,7 @@ type jsonResponse struct {
 // AvailabilityJSON handles request for availability and sends JSON response
 func (m *Repository) AvailabilityJSON(w http.ResponseWriter, r *http.Request) {
 	resp := jsonResponse{
-		OK:      false,
+		OK:      true,
 		Message: "Available!",
 	}
 
