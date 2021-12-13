@@ -1,11 +1,356 @@
 {{template "admin" .}}
 
 {{define "page-title"}}
-    Dashboard
+    <strong>Dashboard</strong>
 {{end}}
 
 {{define "content"}}
-    <div class="col-md-12">
-        Dashboard content
+    <link rel="stylesheet" href="/static/admin/vendors/ti-icons/css/themify-icons.css">
+    <link rel="stylesheet" href="/static/admin/vendors/base/vendor.bundle.base.css">
+
+<div class="main-panel">
+    <div class="content-wrapper">
+        <div class="row">
+            <div class="col-md-12 grid-margin">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h4 class="font-weight-bold mb-0">Hotel Statistics</h4>
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-primary btn-icon-text btn-rounded">
+                            <i class="ti-clipboard btn-icon-prepend"></i>Report
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title text-md-center text-xl-left">Revenue</p>
+                        <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                            <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">34040</h3>
+                            <i class="ti-calendar icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+                        </div>
+                        <p class="mb-0 mt-2 text-danger">0.12% <span class="text-black ms-1"><small>(30 days)</small></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title text-md-center text-xl-left">Expenditure</p>
+                        <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                            <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">47033</h3>
+                            <i class="ti-user icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+                        </div>
+                        <p class="mb-0 mt-2 text-danger">0.47% <span class="text-black ms-1"><small>(30 days)</small></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title text-md-center text-xl-left">Visitors on site</p>
+                        <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                            <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">400</h3>
+                            <i class="ti-agenda icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+                        </div>
+                        <p class="mb-0 mt-2 text-success">4.00%<span class="text-black ms-1"><small>(30 days)</small></span></p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title text-md-center text-xl-left">Hotel guests</p>
+                        <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
+                            <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">120</h3>
+                            <i class="ti-layers-alt icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
+                        </div>
+                        <p class="mb-0 mt-2 text-success">2.15%<span class="text-black ms-1"><small>(30 days)</small></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title">Reservation details</p>
+                        <p class="text-muted font-weight-light">There is reservation details of hotel.</p>
+                        <div id="sales-legend" class="chartjs-legend mt-4 mb-2"></div>
+                        <canvas id="sales-chart"></canvas>
+                    </div>
+                    <div class="card border-right-0 border-left-0 border-bottom-0">
+                        <div class="d-flex justify-content-center justify-content-md-end">
+                            <div class="dropdown flex-md-grow-1 flex-xl-grow-0">
+                                <button class="btn btn-lg btn-outline-light dropdown-toggle rounded-0 border-top-0 border-bottom-0" type="button" id="dropdownMenuDate2" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                                    Today
+                                </button>
+                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdownMenuDate2">
+                                    <a class="dropdown-item" href="#">January - March</a>
+                                    <a class="dropdown-item" href="#">March - June</a>
+                                    <a class="dropdown-item" href="#">June - August</a>
+                                    <a class="dropdown-item" href="#">August - November</a>
+                                </div>
+                            </div>
+                            <button class="btn btn-lg btn-outline-light text-primary rounded-0 border-0 d-none d-md-block" type="button"> View all </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 grid-margin stretch-card">
+                <div class="card border-bottom-0">
+                    <div class="card-body pb-0">
+                        <p class="card-title">Visitors</p>
+                        <p class="text-muted font-weight-light">There is visitors details.</p>
+                        <div class="d-flex flex-wrap mb-5">
+                            <div class="me-5 mt-3">
+                                <p class="text-muted">New visitors</p>
+                                <h3>187</h3>
+                            </div>
+                            <div>
+                                <strong>-----</strong>
+                            </div>
+                            <div class="mt-3">
+                                <p class="text-muted">Feedbacks</p>
+                                <h3>509</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <canvas id="order-chart" class="w-100"></canvas>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-7 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <p class="card-title mb-0">Top employees</p>
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                <tr>
+                                    <th>First Name</th>
+                                    <th>Last Name</th>
+                                    <th>Progress</th>
+                                    <th>Position</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Jacob</td>
+                                    <td>Monarch</td>
+                                    <td class="text-success"> 3 <i class="ti-arrow-up"></i></td>
+                                    <td><label class="badge badge-outline-primary">Administrator</label></td>
+                                </tr>
+                                <tr>
+                                    <td>Nurtay</td>
+                                    <td>Nudiyev</td>
+                                    <td class="text-danger"> 1 <i class="ti-arrow-down"></i></td>
+                                    <td><label class="badge badge-outline-primary">Administrator</label></td>
+                                </tr>
+                                <tr>
+                                    <td>John</td>
+                                    <td>Premier</td>
+                                    <td class="text-danger"> 2 <i class="ti-arrow-down"></i></td>
+                                    <td><label class="badge badge-outline-primary">Restaurant Director</label></td>
+                                </tr>
+                                <tr>
+                                    <td>Beknur</td>
+                                    <td>Bekkaliev</td>
+                                    <td class="text-success"> 4 <i class="ti-arrow-up"></i></td>
+                                    <td><label class="badge badge-outline-primary">Cleaner</label></td>
+                                </tr>
+                                <tr>
+                                    <td>Dave</td>
+                                    <td>Simmons</td>
+                                    <td class="text-success"> 5 <i class="ti-arrow-up"></i></td>
+                                    <td><label class="badge badge-outline-primary">Doorman</label></td>
+                                </tr>
+                                <tr>
+                                    <td>Alisher</td>
+                                    <td>Yelseitov</td>
+                                    <td class="text-danger"> 6 <i class="ti-arrow-down"></i></td>
+                                    <td><label class="badge badge-outline-primary">Receptionist</label></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5 grid-margin stretch-card">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">To Do Lists</h4>
+                        <div class="list-wrapper pt-2">
+                            <ul class="d-flex flex-column-reverse todo-list todo-list-custom">
+                                <li>
+                                    <div class="form-check form-check-flat">
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox">
+                                            Clean database
+                                        </label>
+                                    </div>
+                                    <i class="remove ti-trash"></i>
+                                </li>
+                                <li class="completed">
+                                    <div class="form-check form-check-flat">
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox" checked>
+                                            Create new administrator account
+                                        </label>
+                                    </div>
+                                    <i class="remove ti-trash"></i>
+                                </li>
+                                <li>
+                                    <div class="form-check form-check-flat">
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox">
+                                            Meet new employee
+                                        </label>
+                                    </div>
+                                    <i class="remove ti-trash"></i>
+                                </li>
+                                <li class="completed">
+                                    <div class="form-check form-check-flat">
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox" checked>
+                                            Meet Chinese guests at 13:00
+                                        </label>
+                                    </div>
+                                    <i class="remove ti-trash"></i>
+                                </li>
+                                <li>
+                                    <div class="form-check form-check-flat">
+                                        <label class="form-check-label">
+                                            <input class="checkbox" type="checkbox">
+                                            Delete my account
+                                        </label>
+                                    </div>
+                                    <i class="remove ti-trash"></i>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="add-items d-flex mb-0 mt-4">
+                            <input type="text" class="form-control todo-list-input me-2"  placeholder="Add new task">
+                            <button class="add btn btn-icon text-primary todo-list-add-btn bg-transparent"><i class="ti-location-arrow"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12 grid-margin stretch-card">
+                <div class="card position-relative">
+                    <div class="card-body">
+                        <p class="card-title">Detailed Reports</p>
+                        <div class="row">
+                            <div class="col-md-12 col-xl-3 d-flex flex-column justify-content-center">
+                                <div class="ml-xl-4">
+                                    <h1>3350000</h1>
+                                    <h3 class="font-weight-light mb-xl-4">Revenue</h3>
+                                    <p class="text-muted mb-2 mb-xl-0">There is revenue for this month.</p>
+                                </div>
+                            </div>
+                            <div class="col-md-12 col-xl-9">
+                                <div class="row">
+                                    <div class="col-md-6 mt-3 col-xl-5">
+                                        <canvas id="north-america-chart"></canvas>
+                                        <div id="north-america-legend"></div>
+                                    </div>
+                                    <div class="col-md-6 col-xl-7">
+                                        <div class="table-responsive mb-3 mb-md-0">
+                                            <table class="table table-borderless report-table">
+                                                <tr>
+                                                    <td class="text-muted">Monday</td>
+                                                    <td class="w-100 px-0">
+                                                        <div class="progress progress-md mx-4">
+                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </td>
+                                                    <td><h5 class="font-weight-bold mb-0">524</h5></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-muted">Tuesday</td>
+                                                    <td class="w-100 px-0">
+                                                        <div class="progress progress-md mx-4">
+                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 30%" aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </td>
+                                                    <td><h5 class="font-weight-bold mb-0">722</h5></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-muted">Wednesday</td>
+                                                    <td class="w-100 px-0">
+                                                        <div class="progress progress-md mx-4">
+                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 95%" aria-valuenow="95" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </td>
+                                                    <td><h5 class="font-weight-bold mb-0">173</h5></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-muted">Thursday</td>
+                                                    <td class="w-100 px-0">
+                                                        <div class="progress progress-md mx-4">
+                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 60%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </td>
+                                                    <td><h5 class="font-weight-bold mb-0">945</h5></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-muted">Friday</td>
+                                                    <td class="w-100 px-0">
+                                                        <div class="progress progress-md mx-4">
+                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 40%" aria-valuenow="40" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </td>
+                                                    <td><h5 class="font-weight-bold mb-0">553</h5></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-muted">Saturday</td>
+                                                    <td class="w-100 px-0">
+                                                        <div class="progress progress-md mx-4">
+                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </td>
+                                                    <td><h5 class="font-weight-bold mb-0">912</h5></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="text-muted">Sunday</td>
+                                                    <td class="w-100 px-0">
+                                                        <div class="progress progress-md mx-4">
+                                                            <div class="progress-bar bg-primary" role="progressbar" style="width: 55%" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                                                        </div>
+                                                    </td>
+                                                    <td><h5 class="font-weight-bold mb-0">612</h5></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
+</div>
+
+    <script src="/static/admin/vendors/base/vendor.bundle.base.js"></script>
+
+    <script src="/static/admin/vendors/chart.js/Chart.min.js"></script>
+    <script src="/static/admin/js/jquery.cookie.js" type="text/javascript"></script>
+
+    <script src="/static/admin/js/off-canvas.js"></script>
+    <script src="/static/admin/js/hoverable-collapse.js"></script>
+    <script src="/static/admin/js/template.js"></script>
+    <script src="/static/admin/js/todolist.js"></script>
+
+    <script src="/static/admin/js/dashboard.js"></script>
+
 {{end}}
